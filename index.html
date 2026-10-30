@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socket.IO Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">S</div>
+        <div>
+          <h1>Socket Chat</h1>
+          <p>Real-time messaging</p>
+        </div>
+      </div>
+      <div class="online"><span class="online-dot"></span><span id="onlineCount">0</span> online</div>
+    </header>
+
+    <section class="chat-card">
+      <div class="chat-heading">
+        <div>
+          <h2>General Chat</h2>
+          <p>Say hello to everyone in the room.</p>
+        </div>
+        <span class="room-tag">PUBLIC ROOM</span>
+      </div>
+
+      <div id="messages" class="messages" aria-live="polite">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">✦</div>
+          <h3>Your conversation starts here</h3>
+          <p>Send the first message and get chatting.</p>
+        </div>
+      </div>
+
+      <form id="messageForm" class="composer">
+        <input id="messageInput" type="text" maxlength="500" placeholder="Type your message..." autocomplete="off" aria-label="Message" disabled>
+        <button id="sendButton" type="submit" disabled>Send <span>➤</span></button>
+      </form>
+      <div class="composer-note">Press Enter to send · Be kind and respectful</div>
+    </section>
+    <footer>Built with HTML · CSS · JavaScript · Node.js · Socket.IO</footer>
+  </main>
+
+  <div class="modal-backdrop" id="nameModal">
+    <form class="name-modal" id="nameForm">
+      <div class="modal-mark">S</div>
+      <h2>Welcome to Socket Chat</h2>
+      <p>Choose a display name to join the conversation.</p>
+      <label for="usernameInput">Your name</label>
+      <input id="usernameInput" type="text" maxlength="20" placeholder="e.g. Alex" autocomplete="nickname" required>
+      <button type="submit">Join chat <span>→</span></button>
+    </form>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

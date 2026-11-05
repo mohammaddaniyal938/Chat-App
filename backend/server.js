@@ -12,7 +12,7 @@ const start = async () => {
   const server = http.createServer(app);
   const io = attachSocket(server, env.frontendOrigin);
   app.set("io", io);
-  server.listen(env.port, () => console.log(`Backend running at http://localhost:${env.port}`));
+  server.listen(env.port, "0.0.0.0", () => console.log(`Backend running on port ${env.port}`));
 };
 
 start().catch((error) => {

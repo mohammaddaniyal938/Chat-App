@@ -11,7 +11,7 @@ const attachSocket = (server, origin) => {
   const io = new Server(server, {
     cors: {
       origin: (requestOrigin, callback) => {
-        if (!requestOrigin || allowedOrigins.includes(requestOrigin)) return callback(null, true);
+        if (!requestOrigin || allowedOrigins.includes("*") || allowedOrigins.includes(requestOrigin)) return callback(null, true);
         return callback(new Error("Origin is not allowed by the server CORS policy."));
       },
       credentials: true

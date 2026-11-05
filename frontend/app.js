@@ -31,6 +31,7 @@ const profileDetails = $("#profileDetails");
 const profileForm = $("#profileForm");
 const profileAvatarInput = $("#profileAvatarInput");
 const API_BASE_URL = window.CHAT_API_URL.replace(/\/$/, "");
+const SOCKET_BASE_URL = window.CHAT_SOCKET_URL.replace(/\/$/, "");
 const apiUrl = (url) => `${API_BASE_URL}${url}`;
 
 // Authentication is intentionally tab-scoped: tabs must not share login state.
@@ -228,7 +229,7 @@ const selectRoom = async (room) => {
   await loadMessages(room);
 };
 const connectSocket = () => new Promise((resolve, reject) => {
-  socket = io(API_BASE_URL, { auth: { token }, autoConnect: false });
+  socket = io(SOCKET_BASE_URL, { auth: { token }, autoConnect: false });
   const onConnect = () => { cleanup(); resolve(); };
   const onError = () => {
     cleanup();

@@ -155,7 +155,7 @@
   </div>
 
   <script src="config.js"></script>
-  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script>document.write(`<script src="${window.CHAT_SOCKET_URL}/socket.io/socket.io.js"><\/script>`);</script>
   <script src="app.js"></script>
 </body>
 </html>

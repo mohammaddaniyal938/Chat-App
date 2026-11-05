@@ -1,0 +1,10 @@
+const router = require("express").Router();
+const auth = require("../middleware/auth").authenticate;
+const controller = require("../controllers/conversationController");
+router.use(auth);
+router.get("/", controller.list);
+router.post("/", controller.createRoom);
+router.post("/private", controller.privateConversation);
+router.post("/groups", controller.createGroup);
+router.get("/:roomId/messages", controller.messages);
+module.exports = router;

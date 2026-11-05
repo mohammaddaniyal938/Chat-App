@@ -1,0 +1,24 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "npm --prefix backend test && node --check frontend/app.js && node --check frontend/server.js",
+    "start": "npm --prefix backend start",
+    "start:frontend": "npm --prefix frontend start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammaddaniyal938/Chat-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mohammaddaniyal938/Chat-App/issues"
+  },
+  "homepage": "https://github.com/mohammaddaniyal938/Chat-App#readme",
+  "dependencies": {}
+}

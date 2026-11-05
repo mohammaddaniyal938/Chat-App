@@ -1,0 +1,21 @@
+const http = require("http");
+const mongoose = require("mongoose");
+const env = require("./config/env");
+const createApp = require("./app");
+const attachSocket = require("./socket");
+const Conversation = require("./models/Conversation");
+
+const start = async () => {
+  await mongoose.connect(env.mongoUri);
+  await Conversation.updateOne({ type: "public", name: "General Chat" }, { $setOnInsert: { type: "public", name: "General Chat", description: "Say hello to everyone in the room.", members: [] } }, { upsert: true });
+  const app = createApp(env.frontendOrigin);
+  const server = http.createServer(app);
+  const io = attachSocket(server, env.frontendOrigin);
+  app.set("io", io);
+  server.listen(env.port, () => console.log(`Backend running at http://localhost:${env.port}`));
+};
+
+start().catch((error) => {
+  console.error("Backend startup failed:", error.message);
+  process.exitCode = 1;
+});

@@ -15,4 +15,4 @@ http.createServer((req, res) => {
   }
   res.writeHead(200, { "Content-Type": types[path.extname(file)] || "application/octet-stream" });
   fs.createReadStream(file).pipe(res);
-}).listen(port, () => console.log(`Frontend running at http://localhost:${port}`));
+}).listen(port, "0.0.0.0", () => console.log(`Frontend running on port ${port}`));

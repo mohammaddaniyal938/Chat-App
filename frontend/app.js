@@ -1,4 +1,7 @@
-const $ = (selector) => document.querySelector(selector);
+(function () {
+  if (typeof document === "undefined") return;
+
+  const $ = (selector) => document.querySelector(selector);
 const authModal = $("#nameModal");
 const authForm = $("#nameForm");
 const authTitle = $("#authTitle");
@@ -470,10 +473,11 @@ document.querySelectorAll(".composer-tools .icon-btn").forEach((button) => butto
 
 usernameInput.required = false;
 $("#usernameLabel").hidden = true;
-connect().catch((error) => {
-  if (token) {
-    clearSession();
-    showLogin();
-    showError(error);
-  }
-});
+  connect().catch((error) => {
+    if (token) {
+      clearSession();
+      showLogin();
+      showError(error);
+    }
+  });
+})();

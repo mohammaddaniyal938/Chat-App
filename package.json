@@ -4,9 +4,12 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "test": "npm --prefix backend test && node --check frontend/app.js && node --check frontend/server.js",
-    "start": "npm --prefix backend start",
+    "test": "npm --prefix backend test && node --check api/index.js && node --check frontend/app.js && node --check frontend/server.js",
+    "start": "node backend/server.js",
     "start:frontend": "npm --prefix frontend start"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,11 @@
     "url": "https://github.com/mohammaddaniyal938/Chat-App/issues"
   },
   "homepage": "https://github.com/mohammaddaniyal938/Chat-App#readme",
-  "dependencies": {}
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.3.0",
+    "mongoose": "^8.9.5",
+    "socket.io": "^4.8.4"
+  }
 }

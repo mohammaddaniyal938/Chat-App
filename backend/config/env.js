@@ -7,4 +7,5 @@ const env = {
   sessionDays: Number(process.env.SESSION_DAYS || 30)
 };
 
+console.log(`Backend running on port ${env.port}`);
 module.exports = env;

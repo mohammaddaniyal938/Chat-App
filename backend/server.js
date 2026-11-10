@@ -17,5 +17,8 @@ const start = async () => {
 
 start().catch((error) => {
   console.error("Backend startup failed:", error.message);
+  if (error.code === 8000 || /bad auth|authentication failed/i.test(error.message)) {
+    console.error("Check MONGODB_URI: use your Atlas database user credentials, verify the username and password, percent-encode special characters, and redeploy.");
+  }
   process.exitCode = 1;
 });
